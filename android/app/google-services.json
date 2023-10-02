@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "937213623132",
+    "project_id": "phone-otp-69216",
+    "storage_bucket": "phone-otp-69216.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:937213623132:android:c0cfe5c16dc861615edf99",
+        "android_client_info": {
+          "package_name": "com.example.app_dtn"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJuVv3ZsXMRwd1t-sw_OOTJvOHrsB2KDs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:937213623132:android:ce32a9d7076e72ca5edf99",
+        "android_client_info": {
+          "package_name": "com.example.dtn"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJuVv3ZsXMRwd1t-sw_OOTJvOHrsB2KDs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:937213623132:android:3d42e0e8c14e52fa5edf99",
+        "android_client_info": {
+          "package_name": "com.example.phone_otp_ui"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJuVv3ZsXMRwd1t-sw_OOTJvOHrsB2KDs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
