@@ -198,7 +198,16 @@ class _HomeState extends State<Home> {
     loadTienTichLuy();
     KtraUserEGPP();
     loadBanner();
+    openMessage();
     CachedNetworkImage.logLevel = CacheManagerLogLevel.debug;
+  }
+
+  void openMessage() async {
+    final prefs = await SharedPreferences.getInstance();
+    final message = prefs.getString('message') ?? '0';
+    if (message == '0') {
+      _showMessage();
+    }
   }
 
   void _scrollTop() {
@@ -326,7 +335,6 @@ class _HomeState extends State<Home> {
         }
         break;
       case 'clear':
-        print(type);
         setState(() {
           nhom = [];
           hang = [];
@@ -1278,83 +1286,84 @@ class _HomeState extends State<Home> {
 
 //!Modal login
 
-  // Future<void> _showLogin() async {
-  //   return showDialog<void>(
-  //     context: context,
-  //     barrierDismissible: false, // user must tap button!
-  //     builder: (BuildContext context) {
-  //       return AlertDialog(
-  //         title: Text(
-  //           'Số điện thoại đặt hàng',
-  //           style: TextStyle(color: Color.fromARGB(242, 40, 169, 0)),
-  //         ),
-  //         content: Container(
-  //           width: double.infinity,
-  //           height: 55,
-  //           child: Column(
-  //             mainAxisAlignment: MainAxisAlignment.center,
-  //             children: [
-  //               const SizedBox(height: 15),
-  //               Container(
-  //                 width: 220,
-  //                 height: 40,
-  //                 child: TextField(
-  //                     onChanged: (e) {
-  //                       setState(() {
-  //                         sodienthoai = e;
-  //                       });
-  //                     },
-  //                     textAlignVertical: TextAlignVertical.center,
-  //                     decoration: const InputDecoration(
-  //                         border: OutlineInputBorder(
-  //                             borderRadius:
-  //                                 BorderRadius.all(Radius.circular(30)),
-  //                             borderSide: BorderSide(color: Colors.green)),
-  //                         contentPadding:
-  //                             EdgeInsets.symmetric(horizontal: 20, vertical: 0),
-  //                         hintText: 'Số điện thoại')),
-  //               ),
-  //             ],
-  //           ),
-  //         ),
-  //         actions: <Widget>[
-  //           ElevatedButton(
-  //               style: ButtonStyle(
-  //                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-  //                       RoundedRectangleBorder(
-  //                     borderRadius: BorderRadius.circular(5),
-  //                   )),
-  //                   backgroundColor: MaterialStateProperty.all(Colors.green),
-  //                   padding:
-  //                       MaterialStateProperty.all(const EdgeInsets.all(15)),
-  //                   textStyle: MaterialStateProperty.all(
-  //                       const TextStyle(fontSize: 16, color: Colors.white))),
-  //               onPressed: () {
-  //                 login();
-  //               },
-  //               child: const Text('Đồng ý')),
-  //           ElevatedButton(
-  //               style: ButtonStyle(
-  //                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-  //                       RoundedRectangleBorder(
-  //                     borderRadius: BorderRadius.circular(5),
-  //                   )),
-  //                   backgroundColor: MaterialStateProperty.all(
-  //                       const Color.fromARGB(255, 224, 224, 224)),
-  //                   padding:
-  //                       MaterialStateProperty.all(const EdgeInsets.all(15)),
-  //                   textStyle: MaterialStateProperty.all(
-  //                       const TextStyle(fontSize: 16, color: Colors.black))),
-  //               onPressed: () {
-  //                 Navigator.of(context).pop();
-  //               },
-  //               child: const Text(
-  //                 'Đóng',
-  //                 style: TextStyle(fontSize: 16, color: Colors.black),
-  //               )),
-  //         ],
-  //       );
-  //     },
-  //   );
-  // }
+  Future<void> _showMessage() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text(
+            'THÔNG TIN QUAN TRỌNG',
+            style: TextStyle(color: Color.fromARGB(241, 218, 7, 7)),
+            textAlign: TextAlign.center,
+          ),
+          content: SingleChildScrollView(
+            child: Container(
+              width: double.infinity,
+              child: const Column(
+                children: [
+                  Text(
+                    '     Công ty Cổ phần Dược Tây Nam được Công ty TNHH Công nghệ Phần mềm TPSoft thành lập và phát triển nhằm khẳng định sự nỗ lực không ngừng xây dựng hệ sinh thái hoàn chỉnh với sứ mệnh đem đến cho khách hàng những giá trị thiết thực, sự trải nghiệm hoàn toàn mới và khác biệt.',
+                    textAlign: TextAlign.justify,
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    '     Với tất cả lòng nhiệt huyết và khát khao, chúng tôi vinh dự được cung cấp sản phẩm và dịch vụ đến tất cả các Nhà thuốc, Quầy thuốc, Phòng khám đang hoạt động trên cả nước.',
+                    textAlign: TextAlign.justify,
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    '     Chúng tôi luôn tôn trọng và bảo vệ cộng đồng, vì thế tất cả thông tin về sản phẩm đều nhằm mục đích cung cấp thông tin cho người có chuyên môn theo quy định của pháp luật. Việc sử dụng thuốc kê đơn hay thuốc chữa bệnh phải tuyệt đối tuân thủ theo sự hướng dẫn của người có chuyên môn về y dược.',
+                    textAlign: TextAlign.justify,
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    'Trân trọng cảm ơn.',
+                    textAlign: TextAlign.start,
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    'Dược Tây Nam © by TPSoft',
+                    textAlign: TextAlign.start,
+                  )
+                ],
+              ),
+            ),
+          ),
+          actions: <Widget>[
+            ElevatedButton(
+                style: ButtonStyle(
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5),
+                    )),
+                    backgroundColor: MaterialStateProperty.all(
+                        const Color.fromARGB(255, 224, 224, 224)),
+                    padding:
+                        MaterialStateProperty.all(const EdgeInsets.all(15)),
+                    textStyle: MaterialStateProperty.all(
+                        const TextStyle(fontSize: 16, color: Colors.black))),
+                onPressed: () async {
+                  final prefs = await SharedPreferences.getInstance();
+
+                  Navigator.of(context).pop();
+                  await prefs.setString('message', '1');
+                },
+                child: const Text(
+                  'Đóng',
+                  style: TextStyle(fontSize: 16, color: Colors.black),
+                )),
+          ],
+        );
+      },
+    );
+  }
 }
